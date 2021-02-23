@@ -4,12 +4,39 @@
     <meta charset="UTF-8" />
     <title>Spa Menu</title>
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <h1>My Super Fancy Spa</h1>
 <div id = "clientProfile">
+    <h2>My profile</h2>
+    <p th:text="${'Name: ' + name}">name</p>
+    <p th:text="${'Skintype: ' + skintype}">skintype</p>
+    <p th:text="${'Manicure or Pedicure: ' + manipedi}">manipedi</p>
 </div>
 <div id = "servicesMenu">
+    <h3>Facials Appropriate for Skin Type</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Facial type</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody th:block th:each = "facial : ${appropriateFacials}">
+            <tr>
+                <td scope="row" th:text="${facial}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div th:if = "${manipedi.equals('manicure')}">
+        <h3>Manicure</h3>
+        <p th:replace = "fragments :: manicureDescription">Manicure Description</p>
+    </div>
+    <div th:if = "${manipedi.equals('pedicure')}">
+        <h3>Pedicure</h3>
+        <p th:replace = "fragments :: pedicureDescription">Pedicure Description</p>
+    </div>
 </div>
 </body>
 </html>
