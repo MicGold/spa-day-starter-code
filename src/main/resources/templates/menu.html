@@ -29,11 +29,15 @@
             </tr>
         </tbody>
     </table>
-    <div th:if = "${manipedi.equals('manicure')}">
+    <div th:if = "${manipedi == 'both'}">
+        <h3>Manicure and Pedicure</h3>
+        <p th:replace = "fragments :: maniAndPediDescription">Manicure and Pedicure Description</p>
+    </div>
+    <div th:if = "${manipedi == 'manicure'}">
         <h3>Manicure</h3>
         <p th:replace = "fragments :: manicureDescription">Manicure Description</p>
     </div>
-    <div th:if = "${manipedi.equals('pedicure')}">
+    <div th:if = "${manipedi == 'pedicure'}">
         <h3>Pedicure</h3>
         <p th:replace = "fragments :: pedicureDescription">Pedicure Description</p>
     </div>
